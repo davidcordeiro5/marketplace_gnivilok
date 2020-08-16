@@ -30,11 +30,16 @@ module.exports = {
   },
 
   Mutation: {
-    async createPost(_, { body }, context) {
+    async createPost(_, agrs, context) {
       const user = checkAuth(context);
 
       const newPost = new Post({
-        body,
+        imageUrl: agrs.imageUrl,
+        description: agrs.description,
+        price: agrs.price,
+        size: agrs.size,
+        disponibility:agrs.disponibility,
+        type: agrs.type,
         user: user.id,
         autor: user.username
       });
@@ -45,14 +50,17 @@ module.exports = {
     },
 
 
-    async updatePost(_, { postId, body }, context) {
-     // const user = checkAuth(context);
-
+    async updatePost(_, agrs) {
      try {
-        const actualPost = await Post.findById(postId);
+        const actualPost = await Post.findById(agrs.postId);
         
-        const post = await Post.findByIdAndUpdate(postId, { 
-          body: body ? body : actualPost.body
+        const post = await Post.findByIdAndUpdate(agrs.postId, { 
+          imageUrl: agrs.imageUrl ? agrs.imageUrl : actualPost.imageUrl,
+          description: agrs.description ? agrs.description : actualPost.description,
+          price: agrs.price ? agrs.price : actualPost.price,
+          size: agrs.size ? agrs.size : actualPost.size,
+          disponibility: agrs.disponibility ? agrs.disponibility : actualPost.disponibility,
+          type: agrs.type ? agrs.type : actualPost.type,
         }) 
         
         return post;

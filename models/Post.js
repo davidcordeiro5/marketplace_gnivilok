@@ -1,8 +1,12 @@
 const { model, Schema } = require('mongoose');
 
 const postSchema = new Schema({
-  body: String,
-  image: String,
+  imageUrl: String,
+  description: String,
+  price: String,
+  size: String,
+  disponibility: Boolean,
+  type: String,
   autor: String,
   user: {
     type: Schema.Types.ObjectId,
