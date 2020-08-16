@@ -30,7 +30,7 @@ module.exports = {
   },
 
   Mutation: {
-    async createPost (_, { body }, context) {
+    async createPost(_, { body }, context) {
       const user = checkAuth(context);
 
       const newPost = new Post({
@@ -44,7 +44,19 @@ module.exports = {
       return post
     },
 
-    async deletePost (_, { postId }, context) {
+
+    async updatePost(_, { postId, body }, context) {
+      const user = checkAuth(context);
+
+      try {
+        const post = await Post.findByIdAndUpdate(postId, { body: body }) 
+        return post;
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+
+    async deletePost(_, { postId }, context) {
       const user = checkAuth(context);
 
       try {
