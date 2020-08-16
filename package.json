@@ -20,7 +20,9 @@
   "homepage": "https://github.com/davidcordeiro5/marketplace_gnivilok#readme",
   "dependencies": {
     "apollo-server": "^2.16.1",
+    "bcryptjs": "^2.4.3",
     "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.0"
   },
   "devDependencies": {
