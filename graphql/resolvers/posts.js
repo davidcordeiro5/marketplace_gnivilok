@@ -46,10 +46,15 @@ module.exports = {
 
 
     async updatePost(_, { postId, body }, context) {
-      const user = checkAuth(context);
+     // const user = checkAuth(context);
 
-      try {
-        const post = await Post.findByIdAndUpdate(postId, { body: body }) 
+     try {
+        const actualPost = await Post.findById(postId);
+        
+        const post = await Post.findByIdAndUpdate(postId, { 
+          body: body ? body : actualPost.body
+        }) 
+        
         return post;
       } catch (err) {
         throw new Error(err);
