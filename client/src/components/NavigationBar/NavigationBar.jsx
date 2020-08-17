@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import './NavigationBar.css'
+import './NavigationBar.scss'
 import styled from 'styled-components'
 
 const NavTitle = styled.h1`
@@ -12,7 +12,7 @@ const NavTitle = styled.h1`
 const NavigationBar = () => {
 
   return (
-    <nav class="navbar navbar-expand-lg Gnivilok bg-dark">
+    <nav className="navbar navbar-expand-lg Gnivilok bg-dark">
       <NavTitle className="text-warning"> Gnivilok </NavTitle>
       <div className="w-100 d-flex flex-row justify-content-between px-5">
         <div>

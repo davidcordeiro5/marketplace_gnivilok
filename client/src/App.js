@@ -5,7 +5,7 @@ import Home from './page/Home';
 import Login from './page/Login';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
