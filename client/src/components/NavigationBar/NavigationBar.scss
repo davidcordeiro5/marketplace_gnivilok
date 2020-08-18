@@ -1,6 +1,12 @@
 .navbar a {
-  color: #ffffff
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
+  &:hover {
+    font-weight: bold;  
+  }
 }
+
 
 .link-active {
   font-weight: bold;
