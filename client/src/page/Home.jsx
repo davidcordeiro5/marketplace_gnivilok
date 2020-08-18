@@ -27,7 +27,12 @@ const Home = () => {
   return (
     <div className="container">
       {loading ? (<p>Loading data</p>) : (
-        <Post postData={data.getPosts[0]}/>
+        <Post postData={data.getPosts[0]} title="young" name="padawan" theme={{
+          '$font-family-base': 'Helvetica',
+          '$btn-primary-color': '#EA638C',
+          '$btn-primary-bg': '#190E4F',
+          '$btn-border-radius': '.035rem',
+        }}/>
       )}
       <h2>Post récent</h2>
       <div className="row">

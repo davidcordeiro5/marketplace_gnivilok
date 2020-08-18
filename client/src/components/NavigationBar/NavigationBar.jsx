@@ -2,18 +2,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import './NavigationBar.scss'
-import styled from 'styled-components'
-
-const NavTitle = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-`;
 
 const NavigationBar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg Gnivilok bg-dark">
-      <NavTitle className="text-warning"> Gnivilok </NavTitle>
+      <h1>Gnivilok</h1>
       <div className="w-100 d-flex flex-row justify-content-between px-5">
         <div>
           <NavLink  exact activeClassName="link-active" to="/" style={{ padding: 5 }}>Home</NavLink>
