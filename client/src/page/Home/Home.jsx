@@ -1,5 +1,5 @@
 import React from 'react'
-import grl from 'graphql-tag';
+import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { useQuery } from '@apollo/react-hooks';
 import { H2 } from '@bootstrap-styled/v4'
@@ -7,16 +7,17 @@ import { PageWrapper } from '../../reusable/resable';
 
 import Post from '../../components/Post/Post';
 
-const GET_POSTS = grl`
+const GET_POSTS = gql`
   {
     getPosts {
+      title
       id
       imageUrl
       description
       price
       size
       disponibility
-      type
+      property
       autor  
     }
   }
