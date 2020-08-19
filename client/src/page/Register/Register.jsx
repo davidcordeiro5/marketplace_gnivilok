@@ -39,6 +39,8 @@ const REGISTER_USER = gql`
 `;
 
 const Register = () => {
+  const { handleSubmit, register, errors } = useForm();
+  const [graphqlErrors, setGraphqlErrors] = useState({})
   const [values, setValues] = useState({
     username: '',
     password: '',
@@ -50,10 +52,13 @@ const Register = () => {
     update(proxy, result) {
       console.log('result', result, values)
     },
+    onError(err) {
+
+      console.log(err.graphQLErrors[0].extensions.errors)
+      setGraphqlErrors(err.graphQLErrors[0].extensions.errors)
+    },
     variables: values
   })
-
-  const { handleSubmit, register, errors } = useForm();
   
   
   const onChange = (event) => {
@@ -75,6 +80,7 @@ const Register = () => {
     <PageWrapper>
       <H2 style={{ marginBottom: 40 }} theme={theme}>Register</H2>
       <FromWrapper>
+        { (!loading) ? 
         <From onSubmit={handleSubmit(onSubmit)}>
           <FromGroup>
             <Label forHtml="username">Username :</Label>
@@ -102,7 +108,8 @@ const Register = () => {
           </FromGroup>
 
           <InputSubmit type="submit" value="Validate" />
-        </From>
+        {Object.keys(graphqlErrors).length > 0 ? <p>graphqlErrors: try an other name</p> : null}
+        </From> : (<p>loading...</p>)}
       </FromWrapper>
     </PageWrapper>
   )
