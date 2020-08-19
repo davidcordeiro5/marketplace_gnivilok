@@ -1,6 +1,8 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import styled from 'styled-components';
+
+import { AuthProvider } from './context/auth';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './page/Home/Home';
 import Login from './page/Login/Login';
@@ -14,16 +16,18 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer className="app">
-      <Router>
-        <NavigationBar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-        </Switch>
-      </Router>
-    </AppContainer>
+    <AuthProvider>
+      <AppContainer className="app">
+        <Router>
+          <NavigationBar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </Switch>
+        </Router>
+      </AppContainer>
+    </AuthProvider>
   );
 }
 

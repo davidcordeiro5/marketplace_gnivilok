@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { AuthContext } from '../../context/auth';
 import './NavigationBar.scss'
 
 const MyNavbar = styled.nav`
@@ -24,21 +25,36 @@ const NavTitle = styled.h1`
 `;
 
 const NavigationBar = () => {
+  const context = useContext(AuthContext)
+
 
   return (
     <MyNavbar className="navbar">
       <NavTitle>Gnivilok</NavTitle>
-      <NavLinkWrapper>
-        <div>
-          <NavLink exact activeClassName="link-active" to="/" style={{ padding: 5 }}>Home</NavLink>
-          <NavLink activeClassName="link-active" to="/profile" style={{ padding: 5 }}>Profile</NavLink>
-        </div>
-        <div>
-          <NavLink activeClassName="link-active" to="/login" style={{ padding: 5 }}>Login</NavLink>
-          <NavLink activeClassName="link-active" to="/register" style={{ padding: 5 }}>Registre</NavLink>
-        </div>
-      </NavLinkWrapper>
-    </MyNavbar>
+      {
+        context.user ? (
+          <NavLinkWrapper>
+            <div>
+              <NavLink exact activeClassName="link-active" to="/" style={{ padding: 5 }}>Home</NavLink>
+              <NavLink activeClassName="link-active" to="/profile" style={{ padding: 5 }}>Profile</NavLink>
+            </div>
+            <div>
+              <a onClick={context.logout} style={{ padding: 5 }}>Logout</a>
+            </div>
+          </NavLinkWrapper >
+        ) : (
+            <NavLinkWrapper>
+              <div>
+                <NavLink exact activeClassName="link-active" to="/" style={{ padding: 5 }}>Home</NavLink>
+              </div>
+              <div>
+                <NavLink activeClassName="link-active" to="/login" style={{ padding: 5 }}>Login</NavLink>
+                <NavLink activeClassName="link-active" to="/register" style={{ padding: 5 }}>Registre</NavLink>
+              </div>
+            </NavLinkWrapper >
+          )
+      }
+    </MyNavbar >
   )
 }
 

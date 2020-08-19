@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks'
 import { useForm } from 'react-hook-form';
 import { H2 } from '@bootstrap-styled/v4'
+
+import { AuthContext } from '../../context/auth';
 import {
   PageWrapper,
   FromWrapper,
@@ -39,6 +41,7 @@ const REGISTER_USER = gql`
 `;
 
 const Register = (props) => {
+  const context = useContext(AuthContext)
   const { handleSubmit, register, errors } = useForm();
   const [graphqlErrors, setGraphqlErrors] = useState({})
   const [values, setValues] = useState({
@@ -50,7 +53,7 @@ const Register = (props) => {
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(proxy, result) {
-      console.log('result', result, values)
+      context.login(result.data.register)
       props.history.push('/')
     },
     onError(err) {
