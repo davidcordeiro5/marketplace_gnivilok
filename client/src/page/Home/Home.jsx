@@ -7,7 +7,7 @@ import { PageWrapper } from '../../reusable/resable';
 
 import Post from '../../components/Post/Post';
 
-const getPostsQuery = grl`
+const GET_POSTS = grl`
   {
     getPosts {
       id
@@ -29,7 +29,7 @@ const PostsWrapper = styled.div`
 
 const Home = () => {
 
-  const { loading, data } = useQuery(getPostsQuery)
+  const { loading, data } = useQuery(GET_POSTS)
   const theme = {
     '$font-size-h2': '2rem',
     '$headings-font-weight': 'bold',
