@@ -38,7 +38,7 @@ const REGISTER_USER = gql`
   }
 `;
 
-const Register = () => {
+const Register = (props) => {
   const { handleSubmit, register, errors } = useForm();
   const [graphqlErrors, setGraphqlErrors] = useState({})
   const [values, setValues] = useState({
@@ -51,6 +51,7 @@ const Register = () => {
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(proxy, result) {
       console.log('result', result, values)
+      props.history.push('/')
     },
     onError(err) {
 
