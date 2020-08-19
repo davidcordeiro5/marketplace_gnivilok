@@ -22,7 +22,12 @@ const getPostsQuery = grl`
 
 const HomeContainer = styled.div`
   width: 100%;
-  padding: 0 150px;
+  padding: 20px 150px;
+`;
+
+const PostsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const Home = () => {
@@ -31,29 +36,19 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      {loading ? (<p>Loading data</p>) : (
-        <Post postData={data.getPosts[0]} />
-      )}
       <h2>Post récent</h2>
-      <div className="row">
-        <div className="col" style={{ backgroundColor: '#c3c3c3', margin: '0 5px' }}>
-          Col 1
-        </div>
-        <div className="col" style={{ backgroundColor: '#c3c3c3', margin: '0 5px' }}>
-          col 2
-        </div>
-        <div className="col" style={{ backgroundColor: '#c3c3c3', margin: '0 5px' }}>
-          col 3
-        </div>
-
-        <div className="w-100 d-flex justify-content-between flex-wrap">
-          <div className="w-30" style={{ width: '30%' }}> two</div>
-          <div className="w-30" style={{ width: '30%' }}> three</div>
-          <div className="w-30" style={{ width: '30%' }}> three</div>
-        </div>
-
-      </div>
-      Home
+      {loading ? (<p>Loading data</p>) : (
+        <PostsWrapper>
+          {data.getPosts.map((post) => {
+            console.log('post', post)
+            return (
+              <Post postData={post} key={post.id} />
+            )
+          })}
+        </PostsWrapper>
+        
+      )}
+      
     </HomeContainer>
   )
 }

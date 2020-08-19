@@ -24,8 +24,8 @@ const Post = ({ postData }) => {
       'card-bg': '#313131',
       '$card-border-width': '1px',
       '$card-border-color': '#e6e6e6',
-      '$card-spacer-x': '10px'
-      }} width="30%" >
+      '$card-spacer-x': '10px',
+      }} width="30%" style={{ margin: '15px'}} >
       <MyImg src="https://zupimages.net/up/20/33/vvju.jpg" alt="Card image cap" />
       <CardBlock>
         <CardTitle>Card title</CardTitle>
