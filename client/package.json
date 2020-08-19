@@ -14,8 +14,10 @@
     "bootstrap-styled": "^2.7.2",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.4.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "styled-components": "^5.0.1"
