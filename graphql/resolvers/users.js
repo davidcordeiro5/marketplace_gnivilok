@@ -51,10 +51,10 @@ module.exports = {
         username,
         password,
         confirmPassword,
-        type,
+        userType,
       } }) {
       //Valide user data
-      const { valid, errors } = validateRegisterInput(username, password, confirmPassword)
+      const { valid, errors } = validateRegisterInput(username, password, confirmPassword, userType)
       if (!valid) {
         throw new UserInputError('Errors input', { errors })
       }
@@ -74,7 +74,7 @@ module.exports = {
       const newUser = new User({
         username,
         password,
-        type
+        userType
       })
 
       const res = await newUser.save();

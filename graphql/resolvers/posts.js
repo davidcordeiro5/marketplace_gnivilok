@@ -34,12 +34,13 @@ module.exports = {
       const user = checkAuth(context);
 
       const newPost = new Post({
+        title: agrs.title,
         imageUrl: agrs.imageUrl,
         description: agrs.description,
         price: agrs.price,
         size: agrs.size,
         disponibility:agrs.disponibility,
-        type: agrs.type,
+        property: agrs.property,
         user: user.id,
         autor: user.username
       });
@@ -55,12 +56,13 @@ module.exports = {
         const actualPost = await Post.findById(agrs.postId);
         
         const post = await Post.findByIdAndUpdate(agrs.postId, { 
+          title: agrs.title ? agrs.title : actualPost.title,
           imageUrl: agrs.imageUrl ? agrs.imageUrl : actualPost.imageUrl,
           description: agrs.description ? agrs.description : actualPost.description,
           price: agrs.price ? agrs.price : actualPost.price,
           size: agrs.size ? agrs.size : actualPost.size,
           disponibility: agrs.disponibility ? agrs.disponibility : actualPost.disponibility,
-          type: agrs.type ? agrs.type : actualPost.type,
+          property: agrs.property ? agrs.property : actualPost.property,
         }) 
         
         return post;
