@@ -1,5 +1,32 @@
 import gql from 'graphql-tag';
 
+const GET_POSTS = gql`
+  {
+    getPosts {
+      title
+      id
+      imageUrl
+      description
+      price
+      size
+      disponibility
+      property
+      autor  
+    }
+  }
+`
+
+const GET_USER = gql`
+  {
+    getUser {
+      id
+      username
+      userType
+    }
+  }
+`
+
+
 const LOGIN_USER = gql`
  mutation login(
     $username: String!
@@ -40,24 +67,41 @@ const REGISTER_USER = gql`
   }
 `;
 
-const GET_POSTS = gql`
-  {
-    getPosts {
-      title
+const CREATE_POST = gql`
+  mutation createPost(
+    $title: String!
+    $imageUrl: String!
+    $description: String!
+    $price: String!
+    $size: String!
+    $disponibility: Boolean
+    $property: String!
+  ) {
+    createPost(
+      title: $title,
+      imageUrl: $imageUrl,
+      description: $description,
+      price: $price,
+      size: $size,
+      disponibility: $disponibility,
+      property: $property,
+    ) {
       id
+    	title
       imageUrl
       description
       price
       size
       disponibility
       property
-      autor  
+      autor
     }
   }
-`
+`;
 
 export {
+  GET_POSTS,
   LOGIN_USER,
   REGISTER_USER,
-  GET_POSTS
+  CREATE_POST,
 }

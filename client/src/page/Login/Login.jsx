@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
-import { H2 } from '@bootstrap-styled/v4';
 
 import { LOGIN_USER } from '../../utils/gqlQueries'
 import { AuthContext } from '../../context/auth';
+import TitlePage from '../../components/TitlePage/TitlePage';
 import {
   PageWrapper,
   FromWrapper,
@@ -24,12 +24,6 @@ const Login = (props) => {
     username: '',
     password: ''
   })
-
-  const theme = {
-    '$font-size-h2': '2rem',
-    '$headings-font-weight': 'bold',
-    '$headings-color': '#313131'
-  }
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(proxy, result) {
@@ -53,7 +47,7 @@ const Login = (props) => {
   };
   return (
     <PageWrapper>
-      <H2 style={{ marginBottom: 40 }} theme={theme}>Login</H2>
+      <TitlePage title="Login"/>
       <FromWrapper>
         {(!loading) ? 
         <From onSubmit={handleSubmit(onSubmit)}>
@@ -67,7 +61,9 @@ const Login = (props) => {
             <InputText id="password" name="password" type="password" onChange={onChange} ref={register({ required: true })}/>
             {errors.password && <span>This field is required</span>}
           </FromGroup>
-          <InputSubmit type="submit" value="Connection" />
+          <div style={{display: "flex", justifyContent: "flex-end"}}>
+            <InputSubmit type="submit" value="Connection" />
+          </div>
           {Object.keys(graphqlErrorsLogin).length > 0 ? <p>graphqlErrorsLogin: Bad name or password</p> : null}
         </From>: (<p>loading...</p>)}
       </FromWrapper>

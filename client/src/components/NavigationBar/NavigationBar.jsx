@@ -39,7 +39,7 @@ const NavigationBar = () => {
               <NavLink activeClassName="link-active" to="/profile" style={{ padding: 5 }}>Profile</NavLink>
             </div>
             <div>
-              <a onClick={context.logout} style={{ padding: 5 }}>Logout</a>
+              <a href=" " onClick={context.logout} style={{ padding: 5 }}>Logout</a>
             </div>
           </NavLinkWrapper >
         ) : (

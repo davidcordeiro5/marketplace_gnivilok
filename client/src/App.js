@@ -7,6 +7,7 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './page/Home/Home';
 import Login from './page/Login/Login';
 import Register from './page/Register/Register'
+import Profile from './page/Profile/Profile'
 
 import './App.scss';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/profile" component={Profile} />
           </Switch>
         </Router>
       </AppContainer>

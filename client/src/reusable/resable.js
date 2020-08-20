@@ -15,7 +15,6 @@ const FromWrapper = styled.div`
   border-radius: 15px;
 `;
 
-
 const From = styled.form`
   width: 100%;
   padding: 30px 50px;
@@ -29,7 +28,7 @@ const Label = styled.label`
 
 const InputText = styled.input`
   height: 30px;
-  border: none;
+  border: 1px solid #a9a9a9;
   border-radius: 5px;
   margin: 10px 0;
   color: '#313131';

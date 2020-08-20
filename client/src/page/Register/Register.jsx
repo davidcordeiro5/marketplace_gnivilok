@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks'
 import { useForm } from 'react-hook-form';
-import { H2 } from '@bootstrap-styled/v4'
 
+import TitlePage from '../../components/TitlePage/TitlePage';
 import { REGISTER_USER } from '../../utils/gqlQueries';
 import { AuthContext } from '../../context/auth';
 import {
@@ -51,14 +51,9 @@ const Register = (props) => {
     console.log('event', event, values)
   };
 
-  const theme = {
-    '$font-size-h2': '2rem',
-    '$headings-font-weight': 'bold',
-    '$headings-color': '#313131'
-  }
   return (
     <PageWrapper>
-      <H2 style={{ marginBottom: 40 }} theme={theme}>Register</H2>
+      <TitlePage title="Register"/>
       <FromWrapper>
         { (!loading) ? 
         <From onSubmit={handleSubmit(onSubmit)}>
@@ -86,8 +81,9 @@ const Register = (props) => {
             </Label>
             {errors.userType && <span>This field is required</span>}
           </FromGroup>
-
-          <InputSubmit type="submit" value="Validate" />
+          <div style={{display: "flex", justifyContent: "flex-end"}}>
+            <InputSubmit type="submit" value="Connection" />
+          </div>
         {Object.keys(graphqlErrors).length > 0 ? <p>graphqlErrors: try an other name</p> : null}
         </From> : (<p>loading...</p>)}
       </FromWrapper>
