@@ -20,26 +20,11 @@ const Profile = (props) => {
     }
   })
 
-  console.log('use:::::r', user)
-
   const theme = {
     '$headings-font-weight': 'bold',
     '$headings-color': '#313131'
   }
 
-
-  if (user.data) {
-    console.log('object', user.data.getUser)
-  } else {
-    console.log('NOOOO')
-  }
-  //{user.loading ? (<p>Indentification...</p>) : ({ user.data.getUser.userType === 'landlord' ? null : null })}
-
-  /**
-   *  <div style={{display: "flex", justifyContent: "flex-end"}}>
-        <CreatePostModal/>
-      </div>
-   */
   return (
     <PageWrapper>
       <TitlePage title={`Hi, ${context.user.username} !`} />

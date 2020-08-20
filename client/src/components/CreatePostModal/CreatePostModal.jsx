@@ -10,7 +10,7 @@ import {
   ModalFooter,
 } from '@bootstrap-styled/v4';
 
-import { CREATE_POST } from '../../utils/gqlQueries';
+import { CREATE_POST,  GET_POSTS} from '../../utils/gqlQueries';
 
 const ModalFromGroup = styled.div`
   width: 100%;
@@ -75,7 +75,14 @@ const CreatePostModal = () => {
   })
   const [createPost, {error}] = useMutation(CREATE_POST, {
     update(proxy, result) {
-      console.log('result', result)
+      const data = proxy.readQuery({
+        query: GET_POSTS
+      })
+
+      console.log('result.data', result.data)
+      data.getPosts = [result.data.createPost, ...data.getPosts]
+      proxy.writeQuery({ query: GET_POSTS, data})
+
       setModalValues({
         title: "",
         imageUrl: "",
@@ -86,12 +93,9 @@ const CreatePostModal = () => {
         property: ""
       })
     },
-    onError(err) {
-      console.log(err)
-      //setGraphqlErrors(err.graphQLErrors[0].extensions.errors)
-    },
     variables: modalValues
   });
+  
   const { handleSubmit, register, errors } = useForm();
   const [modal, setModal] = useState(false)
   const handleClose = () => setModal(!modal);
