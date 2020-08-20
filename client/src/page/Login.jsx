@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
 
-import { LOGIN_USER } from '../../utils/gqlQueries'
-import { AuthContext } from '../../context/auth';
-import TitlePage from '../../components/TitlePage/TitlePage';
+import { LOGIN_USER } from '../utils/gqlQueries'
+import { AuthContext } from '../context/auth';
+import TitlePage from '../components/TitlePage';
 import {
   PageWrapper,
   FromWrapper,
@@ -13,7 +13,7 @@ import {
   InputSubmit,
   InputText,
   Label
-} from '../../reusable/resable'
+} from '../reusable/resable'
 
 const Login = (props) => {
   const context = useContext(AuthContext)

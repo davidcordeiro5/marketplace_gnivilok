@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 import { AuthProvider } from './context/auth';
 import NavigationBar from './components/NavigationBar/NavigationBar';
-import Home from './page/Home/Home';
-import Login from './page/Login/Login';
-import Register from './page/Register/Register'
-import Profile from './page/Profile/Profile'
+import Home from './page/Home';
+import Login from './page/Login';
+import Register from './page/Register'
+import Profile from './page/Profile'
 
 import './App.scss';
 

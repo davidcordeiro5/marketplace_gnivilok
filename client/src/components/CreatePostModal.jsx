@@ -10,7 +10,7 @@ import {
   ModalFooter,
 } from '@bootstrap-styled/v4';
 
-import { CREATE_POST,  GET_POSTS} from '../../utils/gqlQueries';
+import { CREATE_POST,  GET_POSTS} from '../utils/gqlQueries';
 
 const ModalFromGroup = styled.div`
   width: 100%;

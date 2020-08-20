@@ -9,7 +9,7 @@ import {
   CardFooter,
 } from '@bootstrap-styled/v4';
 
-import DefaultImg from '../../assets/images/image-not-found.png'
+import DefaultImg from '../assets/images/image-not-found.png'
 
 const MyImg = styled.img`
   width: 100%;

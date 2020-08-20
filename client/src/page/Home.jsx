@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { useQuery } from '@apollo/react-hooks';
 
 
-import { GET_POSTS } from '../../utils/gqlQueries';
-import { PageWrapper } from '../../reusable/resable';
-import TitlePage from '../../components/TitlePage/TitlePage';
-import Post from '../../components/Post/Post';
+import { GET_POSTS } from '../utils/gqlQueries';
+import { PageWrapper } from '../reusable/resable';
+import TitlePage from '../components/TitlePage';
+import Post from '../components/Post';
 
 const PostsWrapper = styled.div`
   display: flex;

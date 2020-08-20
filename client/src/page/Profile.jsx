@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import { H3 } from '@bootstrap-styled/v4';
 
-import { GET_POSTS, GET_USER } from '../../utils/gqlQueries';
-import { AuthContext } from '../../context/auth';
-import { PageWrapper } from '../../reusable/resable';
-import TitlePage from '../../components/TitlePage/TitlePage'
-import CreatePostModal from '../../components/CreatePostModal/CreatePostModal';
-import Post from '../../components/Post/Post';
+import { GET_POSTS, GET_USER } from '../utils/gqlQueries';
+import { AuthContext } from '../context/auth';
+import { PageWrapper } from '../reusable/resable';
+import TitlePage from '../components/TitlePage'
+import CreatePostModal from '../components/CreatePostModal';
+import Post from '../components/Post';
 import { validate } from 'graphql';
 
 const Profile = (props) => {

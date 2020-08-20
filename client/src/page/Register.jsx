@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks'
 import { useForm } from 'react-hook-form';
 
-import TitlePage from '../../components/TitlePage/TitlePage';
-import { REGISTER_USER } from '../../utils/gqlQueries';
-import { AuthContext } from '../../context/auth';
+import TitlePage from '../components/TitlePage';
+import { REGISTER_USER } from '../utils/gqlQueries';
+import { AuthContext } from '../context/auth';
 import {
   PageWrapper,
   FromWrapper,
@@ -14,7 +14,7 @@ import {
   InputSubmit,
   InputText,
   Label
-} from '../../reusable/resable'
+} from '../reusable/resable'
 
 const Register = (props) => {
   const context = useContext(AuthContext)
