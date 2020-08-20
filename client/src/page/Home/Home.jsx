@@ -1,27 +1,11 @@
 import React from 'react'
-import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { useQuery } from '@apollo/react-hooks';
 import { H2 } from '@bootstrap-styled/v4'
+
+import { GET_POSTS } from '../../utils/gqlQueries';
 import { PageWrapper } from '../../reusable/resable';
-
 import Post from '../../components/Post/Post';
-
-const GET_POSTS = gql`
-  {
-    getPosts {
-      title
-      id
-      imageUrl
-      description
-      price
-      size
-      disponibility
-      property
-      autor  
-    }
-  }
-`
 
 const PostsWrapper = styled.div`
   display: flex;
@@ -49,9 +33,7 @@ const Home = () => {
             )
           })}
         </PostsWrapper>
-        
       )}
-      
     </PageWrapper>
   )
 }

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks'
 import { useForm } from 'react-hook-form';
 import { H2 } from '@bootstrap-styled/v4'
 
+import { REGISTER_USER } from '../../utils/gqlQueries';
 import { AuthContext } from '../../context/auth';
 import {
   PageWrapper,
@@ -15,30 +15,6 @@ import {
   InputText,
   Label
 } from '../../reusable/resable'
-
-
-const REGISTER_USER = gql`
-  mutation register(
-    $username: String!
-    $password: String!
-    $confirmPassword: String!
-    $userType: String!
-  ) {
-    register(
-      registerInput: {
-        username: $username,
-        password: $password,
-        confirmPassword: $confirmPassword,
-        userType: $userType,
-      }
-    ) {
-      id
-      username
-      userType
-      token
-    }
-  }
-`;
 
 const Register = (props) => {
   const context = useContext(AuthContext)

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
 import { H2 } from '@bootstrap-styled/v4';
 
+import { LOGIN_USER } from '../../utils/gqlQueries'
 import { AuthContext } from '../../context/auth';
 import {
   PageWrapper,
@@ -14,23 +14,6 @@ import {
   InputText,
   Label
 } from '../../reusable/resable'
-
-const LOGIN_USER = gql`
- mutation login(
-    $username: String!
-    $password: String!
-  ) {
-    login(
-        username: $username,
-        password: $password
-    ) {
-      id
-      username
-      userType
-      token
-    }
-  }
-`;
 
 const Login = (props) => {
   const context = useContext(AuthContext)
@@ -88,7 +71,6 @@ const Login = (props) => {
           {Object.keys(graphqlErrorsLogin).length > 0 ? <p>graphqlErrorsLogin: Bad name or password</p> : null}
         </From>: (<p>loading...</p>)}
       </FromWrapper>
-
     </PageWrapper>
   )
 }
