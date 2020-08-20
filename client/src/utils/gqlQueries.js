@@ -17,8 +17,8 @@ const GET_POSTS = gql`
 `
 
 const GET_USER = gql`
-  {
-    getUser {
+  query($userId: ID!) {
+    getUser(userId: $userId) {
       id
       username
       userType
@@ -101,6 +101,7 @@ const CREATE_POST = gql`
 
 export {
   GET_POSTS,
+  GET_USER,
   LOGIN_USER,
   REGISTER_USER,
   CREATE_POST,

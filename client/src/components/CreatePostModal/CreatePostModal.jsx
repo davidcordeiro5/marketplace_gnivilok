@@ -110,7 +110,7 @@ const CreatePostModal = () => {
   return (
     <WrapperCreatePostModal>
       <Button color="secondary" onClick={() => handleClose()}>Create new post</Button>
-      <Modal style={{ backgroundColor: '#FFBF00', borderRadius: 15 }} isOpen={modal} toggle={() => handleClose()}>
+      <Modal isOpen={modal} toggle={() => handleClose()}>
         <ModalHeader toggle={() => handleClose()}>Creation post</ModalHeader>
         <ModalBody>
           <ModalFrom onSubmit={handleSubmit(onSubmit)}>

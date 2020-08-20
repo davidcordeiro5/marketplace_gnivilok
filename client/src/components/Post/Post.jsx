@@ -6,7 +6,6 @@ import {
   CardTitle,
   CardSubtitle,
   CardText,
-  Button,
   CardFooter,
 } from '@bootstrap-styled/v4';
 
@@ -27,7 +26,7 @@ const theme = {
 const Post = ({ postData }) => {
   console.log('postData', postData)
   return (
-    <Card onClick={() => console.log('click', postData.id)} theme={theme} style={{ margin: '15px', width: '30%'}} >
+    <Card onClick={() => console.log('click', postData.id)} theme={theme} style={{ margin: '15px', width: '30%', cursor: 'pointer'}} >
       <MyImg src={postData.imageUrl ? postData.imageUrl : DefaultImg} alt={postData.title} />
       <CardBlock>
         <CardTitle>{postData.title}</CardTitle>
