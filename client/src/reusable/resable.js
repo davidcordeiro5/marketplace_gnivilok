@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const PageWrapper = styled.div`
   width: 100%;
   padding: 20px 150px;
-  background-color: ${props => props.bgc ? props.bgc : 'none'}
+  background-color: ${props => props.bgc ? props.bgc : 'none'};
 `;
 
 const FromWrapper = styled.div`
@@ -65,6 +65,31 @@ const InputSubmit = styled.input`
 `;
 
 
+const CustomButton = styled.button`
+  cursor: pointer;
+   ${(props) => `
+      position:  ${props.position ? props.position : 'unset'};
+      top:  ${props.top ? props.top : 'unset'};
+      bottom:  ${props.bottom ? props.bottom : 'unset'};
+      left:  ${props.left ? props.left : 'unset'};
+      right:  ${props.right ? props.right : 'unset'};
+      padding:  ${props.padding ? props.padding : '0.5rem 1rem'};
+      font-size:  ${props.fontSize ? props.fontSize : '1rem'};
+      font-weight:  ${props.fontWeight ? props.fontWeight : '100'};
+      background-color: ${props.bgc ? props.bgc : '#fff'};
+      color: ${props.color ? props.color : '#000'};
+      border: ${props.border ? props.border : 'none'};
+      border-radius: ${props.borderRadius ? props.borderRadius : '0'};
+  `};
+  :hover {
+    opacity: 0.9;
+  }
+  :focus {
+    outline:0;
+  }
+`;
+
+
 export {
   PageWrapper,
   FromWrapper,
@@ -73,5 +98,6 @@ export {
   InputText,
   InputRadio,
   InputSubmit,
-  Label
+  Label,
+  CustomButton
 }
