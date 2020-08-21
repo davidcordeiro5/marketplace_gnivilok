@@ -15,7 +15,6 @@ const WrapperImageCarousel = styled.div`
 `;
 
 const CarouselPostImages = ({ img }) => {
-  console.log('img', img)
   return (
     <WrapperImageCarousel bgi={img}>
       <CustomButton

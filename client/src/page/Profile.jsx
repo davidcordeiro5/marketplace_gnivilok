@@ -41,7 +41,7 @@ const Profile = (props) => {
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {data.getPosts.map((post) => {
               if (post.autor === context.user.username) {
-                return <Post postData={post} key={post.id} />
+                return <Post postData={post} key={post.id} deleteable={true}/>
               }
             })}
           </div>
