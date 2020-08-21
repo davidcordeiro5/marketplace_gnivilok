@@ -16,6 +16,22 @@ const GET_POSTS = gql`
   }
 `
 
+const GET_POST_BY_ID = gql`
+  query($postId: ID!) {
+    getPost(postId: $postId) {
+      id
+      title
+      imageUrl
+      description
+      price
+      size
+      disponibility
+      property
+      autor
+    }
+  }
+`
+
 const GET_USER = gql`
   query($userId: ID!) {
     getUser(userId: $userId) {
@@ -101,6 +117,7 @@ const CREATE_POST = gql`
 
 export {
   GET_POSTS,
+  GET_POST_BY_ID,
   GET_USER,
   LOGIN_USER,
   REGISTER_USER,

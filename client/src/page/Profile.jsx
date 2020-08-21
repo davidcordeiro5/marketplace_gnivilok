@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import { H3 } from '@bootstrap-styled/v4';
 
@@ -8,12 +8,12 @@ import { PageWrapper } from '../reusable/resable';
 import TitlePage from '../components/TitlePage'
 import CreatePostModal from '../components/CreatePostModal';
 import Post from '../components/Post';
-import { validate } from 'graphql';
 
 const Profile = (props) => {
   const context = useContext(AuthContext)
 
   const { loading, data } = useQuery(GET_POSTS)
+  
   const user = useQuery(GET_USER, {
     variables: {
       userId: context.user.id

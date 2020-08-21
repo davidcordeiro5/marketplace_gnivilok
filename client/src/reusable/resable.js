@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const PageWrapper = styled.div`
   width: 100%;
   padding: 20px 150px;
+  background-color: ${props => props.bgc ? props.bgc : 'none'}
 `;
 
 const FromWrapper = styled.div`

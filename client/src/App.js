@@ -6,8 +6,9 @@ import { AuthProvider } from './context/auth';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './page/Home';
 import Login from './page/Login';
-import Register from './page/Register'
-import Profile from './page/Profile'
+import Register from './page/Register';
+import Profile from './page/Profile';
+import SinglePost from './page/SinglePost';
 
 import './App.scss';
 
@@ -22,10 +23,11 @@ function App() {
         <Router>
           <NavigationBar />
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/profile" component={Profile} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/post/:postId" component={SinglePost} />
           </Switch>
         </Router>
       </AppContainer>

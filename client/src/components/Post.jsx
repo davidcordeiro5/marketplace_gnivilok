@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardBlock,
@@ -24,9 +25,14 @@ const theme = {
 }
 
 const Post = ({ postData }) => {
+
+  const history = useHistory();
+
+
   console.log('postData', postData)
   return (
-    <Card onClick={() => console.log('click', postData.id)} theme={theme} style={{ margin: '15px', width: '30%', cursor: 'pointer'}} >
+    <Card onClick={() => history.push(`/post/${postData.id}`)} 
+      theme={theme} style={{ margin: '15px', width: '30%', cursor: 'pointer'}} >
       <MyImg src={postData.imageUrl ? postData.imageUrl : DefaultImg} alt={postData.title} />
       <CardBlock>
         <CardTitle>{postData.title}</CardTitle>
