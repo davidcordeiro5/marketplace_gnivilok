@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 import {
   Card,
@@ -10,6 +11,7 @@ import {
   CardFooter,
 } from '@bootstrap-styled/v4';
 
+import { DELETE_POST, GET_POSTS } from '../utils/gqlQueries'
 import DefaultImg from '../assets/images/image-not-found.png'
 import DeleteIcon from '../assets/icons/trash.png'
 import EditIcon from '../assets/icons/edit.png'
@@ -55,36 +57,55 @@ const Icon = styled.img`
    margin: 5px;
 `;
 
-const Post = ({ postData, deleteable }) => {
+const Post = (props) => {
+
+  const [deletePost] = useMutation(DELETE_POST, {
+    update(proxy) {
+      const data = proxy.readQuery({
+        query: GET_POSTS
+      })
+
+      data.getPosts = data.getPosts.filter(p => p.id !== props.postData.postId)
+      proxy.writeQuery({ 
+        query: GET_POSTS, data
+      })
+    },
+    variables: {
+      postId: props.postData.id
+    }
+  })
 
   const history = useHistory();
 
-  console.log('postDatazzz', postData, deleteable)
+  console.log('postDatazzz', props.postData ,props.deleteable)
   return (
     <Card 
       theme={theme} style={{ margin: '15px', width: '30%'}} >
-      <MyImg src={postData.imageUrl ? postData.imageUrl : DefaultImg} alt={postData.title} />
-      <CardBlock onClick={() => history.push(`/post/${postData.id}`)} 
+      <MyImg src={props.postData.imageUrl ? props.postData.imageUrl : DefaultImg} alt={props.postData.title} />
+      <CardBlock onClick={() => history.push(`/post/${props.postData.id}`)} 
         style={{cursor: 'pointer', overflow: 'hidden',
         maxHeight: '280px'
     }}>
-        <CardTitle>{postData.title}</CardTitle>
-        <CardSubtitle style={{ margin: '5px 0' }}>{`${postData.price}`}</CardSubtitle>
-        <CardSubtitle>{`${postData.size} m²`}</CardSubtitle>
-        <CardText>{postData.description}</CardText>
+        <CardTitle>{props.postData.title}</CardTitle>
+        <CardSubtitle style={{ margin: '5px 0' }}>{`${props.postData.price}`}</CardSubtitle>
+        <CardSubtitle>{`${props.postData.size} m²`}</CardSubtitle>
+        <CardText>{props.postData.description}</CardText>
       </CardBlock>
       <CardFooter style={{
         padding: '10px 20px', fontStyle: 'italic', fontSize: '0.8rem', display: 'flex',
         position: 'relative', alignItems: 'center'
       }}>
-        {`Posted by :   ${postData.autor}`}
-        {deleteable ?
+        {`Posted by :   ${props.postData.autor}`}
+        {props.deleteable ?
           <IconButtonWrapper>
             <IconButton bgc={"#ffdb43"} >
               <Icon src={EditIcon} alt="edit"/>
             </IconButton>
             <IconButton bgc={'#ff3535'}>
-              <Icon src={DeleteIcon} alt="delete"/>
+              <Icon src={DeleteIcon} alt="delete" onClick={() => {
+                console.log('RM')
+                deletePost()
+              }}/>
           </IconButton>
           </IconButtonWrapper> : null}
       </CardFooter>

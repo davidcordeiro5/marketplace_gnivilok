@@ -115,9 +115,16 @@ const CREATE_POST = gql`
   }
 `;
 
+const DELETE_POST = gql`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId)
+  }
+`;
+
 export {
   GET_POSTS,
   GET_POST_BY_ID,
+  DELETE_POST,
   GET_USER,
   LOGIN_USER,
   REGISTER_USER,

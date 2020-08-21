@@ -13,7 +13,7 @@ const Profile = (props) => {
   const context = useContext(AuthContext)
 
   const { loading, data } = useQuery(GET_POSTS)
-  
+
   const user = useQuery(GET_USER, {
     variables: {
       userId: context.user.id
@@ -40,8 +40,9 @@ const Profile = (props) => {
           <H3 theme={{ theme }}>Mes post</H3>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {data.getPosts.map((post) => {
+              console.log('post', post)
               if (post.autor === context.user.username) {
-                return <Post postData={post} key={post.id} deleteable={true}/>
+                return <Post postData={post} key={post.id} deleteable={true} />
               }
             })}
           </div>
@@ -49,7 +50,7 @@ const Profile = (props) => {
       )}
       <div>
         <H3 theme={{ theme }}>Ils me demandes</H3>
-        
+
       </div>
     </PageWrapper>
   )
