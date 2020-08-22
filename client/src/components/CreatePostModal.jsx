@@ -53,6 +53,7 @@ const ModalInputSubmit = styled.input`
     border: none;
     font-size: 1rem;
     background-color: #313131;
+    margin: 15px 0;
     color: #ffffff;
   :hover {
     background-color: #444444;
@@ -155,9 +156,6 @@ const CreatePostModal = () => {
             <ModalInputSubmit type="submit" value="Validate" />
           </ModalFrom>
         </ModalBody>
-        <ModalFooter>
-          <Button color="danger" onClick={() => handleClose()}>Cancel</Button>
-        </ModalFooter>
       </Modal>
     </WrapperCreatePostModal>
   )
