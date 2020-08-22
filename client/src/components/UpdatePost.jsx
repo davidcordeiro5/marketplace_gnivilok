@@ -80,7 +80,11 @@ const UpdatePost = ({ post }) => {
 
   const [updatePost] = useMutation(UPDATE_POST, {
     update(proxy, result) {
-      console.log('result', result)
+      // const data = proxy.readQuery({
+      //   query: GET_POSTS
+      // })
+
+      // console.log('result', data)
     },
     variables: editedValues
   })

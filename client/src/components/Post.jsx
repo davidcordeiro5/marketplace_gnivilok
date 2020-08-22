@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 import {
   Card,
@@ -13,10 +12,7 @@ import {
 
 import UpdatePost from '../components/UpdatePost'
 import DeletePost from '../components/DeletePost'
-import { Icon, IconButton } from '../reusable/resable'
-import { DELETE_POST, GET_POSTS, UPDATE_POST } from '../utils/gqlQueries'
 import DefaultImg from '../assets/images/image-not-found.png'
-import EditIcon from '../assets/icons/edit.png'
 
 const MyImg = styled.img`
   width: 100%;
@@ -38,29 +34,7 @@ const IconButtonWrapper = styled.div`
 
 
 const Post = (props) => {
-
-  //TODO: create an other component for delete n edite
-
-  const [deletePost] = useMutation(DELETE_POST, {
-    update(proxy) {
-      const data = proxy.readQuery({
-        query: GET_POSTS
-      })
-      data.getPosts = data.getPosts.filter(p => p.id !== props.postData.postId)
-      proxy.writeQuery({ 
-        query: GET_POSTS, data
-      })
-    },
-    variables: {
-      postId: props.postData.id
-    }
   
-  })
-
-  const [updatePost] = useMutation(UPDATE_POST)
-
-
-
   const history = useHistory();
 
   console.log('postDatazzz', props.postData ,props.deleteable)

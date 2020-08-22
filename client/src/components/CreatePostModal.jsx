@@ -80,7 +80,6 @@ const CreatePostModal = () => {
         query: GET_POSTS
       })
 
-      console.log('result.data', result.data)
       data.getPosts = [result.data.createPost, ...data.getPosts]
       proxy.writeQuery({ query: GET_POSTS, data})
 
