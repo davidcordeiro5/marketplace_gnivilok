@@ -11,9 +11,10 @@ import {
   CardFooter,
 } from '@bootstrap-styled/v4';
 
-import { DELETE_POST, GET_POSTS } from '../utils/gqlQueries'
+import DeletePost from '../components/DeletePost'
+import { Icon, IconButton } from '../reusable/resable'
+import { DELETE_POST, GET_POSTS, UPDATE_POST } from '../utils/gqlQueries'
 import DefaultImg from '../assets/images/image-not-found.png'
-import DeleteIcon from '../assets/icons/trash.png'
 import EditIcon from '../assets/icons/edit.png'
 
 const MyImg = styled.img`
@@ -34,37 +35,16 @@ const IconButtonWrapper = styled.div`
   margin-left: auto;
 `;
 
-const IconButton = styled.button`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => props.bgc ? props.bgc : ''};
-  border: none;
-  border-radius: 5px;
-  margin: 0 5px;
-  :hover {
-    opacity: 0.8;
-  }
-  :focus {
-    outline:0;
-  }
-`;
-
-const Icon = styled.img`
-  width: 20px;
-  height: 20px;
-   margin: 5px;
-`;
 
 const Post = (props) => {
+
+  //TODO: create an other component for delete n edite
 
   const [deletePost] = useMutation(DELETE_POST, {
     update(proxy) {
       const data = proxy.readQuery({
         query: GET_POSTS
       })
-
       data.getPosts = data.getPosts.filter(p => p.id !== props.postData.postId)
       proxy.writeQuery({ 
         query: GET_POSTS, data
@@ -73,7 +53,12 @@ const Post = (props) => {
     variables: {
       postId: props.postData.id
     }
+  
   })
+
+  const [updatePost] = useMutation(UPDATE_POST)
+
+
 
   const history = useHistory();
 
@@ -101,12 +86,7 @@ const Post = (props) => {
             <IconButton bgc={"#ffdb43"} >
               <Icon src={EditIcon} alt="edit"/>
             </IconButton>
-            <IconButton bgc={'#ff3535'}>
-              <Icon src={DeleteIcon} alt="delete" onClick={() => {
-                console.log('RM')
-                deletePost()
-              }}/>
-          </IconButton>
+            <DeletePost id={props.postData.id}/>
           </IconButtonWrapper> : null}
       </CardFooter>
     </Card >

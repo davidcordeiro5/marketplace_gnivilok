@@ -121,6 +121,21 @@ const DELETE_POST = gql`
   }
 `;
 
+const UPDATE_POST = gql`
+  mutation updatePost(
+    $postId: ID!
+    $title: String
+    $imageUrl: String
+    $description: String
+    $price: String
+    $size: String
+    $disponibility: Boolean
+    $property: String
+  ) {
+    deletePost(postId: $postId)
+  }
+`;
+
 export {
   GET_POSTS,
   GET_POST_BY_ID,
@@ -129,4 +144,5 @@ export {
   LOGIN_USER,
   REGISTER_USER,
   CREATE_POST,
+  UPDATE_POST,
 }

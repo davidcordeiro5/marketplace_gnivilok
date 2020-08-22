@@ -90,6 +90,30 @@ const CustomButton = styled.button`
 `;
 
 
+const IconButton = styled.button`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.bgc ? props.bgc : ''};
+  border: none;
+  border-radius: 5px;
+  margin: 0 5px;
+  :hover {
+    opacity: 0.8;
+  }
+  :focus {
+    outline:0;
+  }
+`;
+
+const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+   margin: 5px;
+`;
+
+
 export {
   PageWrapper,
   FromWrapper,
@@ -99,5 +123,7 @@ export {
   InputRadio,
   InputSubmit,
   Label,
-  CustomButton
+  CustomButton,
+  IconButton,
+  Icon,
 }
