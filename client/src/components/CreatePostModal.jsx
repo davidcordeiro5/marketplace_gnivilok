@@ -74,7 +74,7 @@ const CreatePostModal = () => {
     disponibility: true,
     property: ""
   })
-  const [createPost, {error}] = useMutation(CREATE_POST, {
+  const [createPost] = useMutation(CREATE_POST, {
     update(proxy, result) {
       const data = proxy.readQuery({
         query: GET_POSTS

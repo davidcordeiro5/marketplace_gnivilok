@@ -11,6 +11,7 @@ import {
   CardFooter,
 } from '@bootstrap-styled/v4';
 
+import UpdatePost from '../components/UpdatePost'
 import DeletePost from '../components/DeletePost'
 import { Icon, IconButton } from '../reusable/resable'
 import { DELETE_POST, GET_POSTS, UPDATE_POST } from '../utils/gqlQueries'
@@ -83,9 +84,7 @@ const Post = (props) => {
         {`Posted by :   ${props.postData.autor}`}
         {props.deleteable ?
           <IconButtonWrapper>
-            <IconButton bgc={"#ffdb43"} >
-              <Icon src={EditIcon} alt="edit"/>
-            </IconButton>
+             <UpdatePost post={props.postData}/>
             <DeletePost id={props.postData.id}/>
           </IconButtonWrapper> : null}
       </CardFooter>

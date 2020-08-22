@@ -132,8 +132,26 @@ const UPDATE_POST = gql`
     $disponibility: Boolean
     $property: String
   ) {
-    deletePost(postId: $postId)
-  }
+    updatePost(
+      postId: $postId
+      title: $title
+      imageUrl: $imageUrl
+      description: $description
+      price: $price
+      size: $size
+      disponibility: $disponibility
+      property: $property) {
+        id
+        title
+        imageUrl
+        description
+        price
+        size
+        disponibility
+        property
+        autor
+      }
+    }
 `;
 
 export {
