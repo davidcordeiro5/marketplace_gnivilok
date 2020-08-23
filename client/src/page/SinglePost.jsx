@@ -24,7 +24,6 @@ const SinglePost = (props) => {
     }
   })
 
-  console.log('MY DATA', data)
   return (
     <PageWrapper bgc="#F4F4ED">
       {loading ? (<p>Loading data...</p>) : (

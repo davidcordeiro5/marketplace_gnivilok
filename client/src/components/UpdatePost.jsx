@@ -3,11 +3,9 @@ import styled from 'styled-components'
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
 import {
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
 } from '@bootstrap-styled/v4';
 
 import { Icon, IconButton } from '../reusable/resable'
@@ -84,7 +82,7 @@ const UpdatePost = ({ post }) => {
       //   query: GET_POSTS
       // })
 
-      // console.log('result', data)
+      console.log('result', result)
     },
     variables: editedValues
   })

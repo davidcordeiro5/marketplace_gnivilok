@@ -36,8 +36,6 @@ const IconButtonWrapper = styled.div`
 const Post = (props) => {
   
   const history = useHistory();
-
-  console.log('postDatazzz', props.postData ,props.deleteable)
   return (
     <Card 
       theme={theme} style={{ margin: '15px', width: '30%'}} >

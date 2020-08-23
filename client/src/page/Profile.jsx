@@ -9,9 +9,8 @@ import TitlePage from '../components/TitlePage'
 import CreatePostModal from '../components/CreatePostModal';
 import Post from '../components/Post';
 
-const Profile = (props) => {
+const Profile = () => {
   const context = useContext(AuthContext)
-
   const { loading, data } = useQuery(GET_POSTS)
 
   const user = useQuery(GET_USER, {
@@ -24,8 +23,9 @@ const Profile = (props) => {
     '$headings-font-weight': 'bold',
     '$headings-color': '#313131'
   }
-
-  console.log('user', user)
+  
+  
+  console.log('loading', data)
   return (
     <PageWrapper>
       <TitlePage title={`Hi, ${context.user.username} !`} />
@@ -41,7 +41,6 @@ const Profile = (props) => {
           <H3 theme={{ theme }}>Mes post</H3>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {data.getPosts.map((post) => {
-              console.log('post', post)
               if (post.autor === context.user.username) {
                 return <Post postData={post} key={post.id} deleteable={true} />
               }

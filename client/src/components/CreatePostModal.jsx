@@ -7,7 +7,6 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
 } from '@bootstrap-styled/v4';
 
 import { CREATE_POST,  GET_POSTS} from '../utils/gqlQueries';
@@ -19,12 +18,10 @@ const ModalFromGroup = styled.div`
   margin: 5px 0;
 `;
 
-
 const ModalFrom = styled.form`
   width: 100%;
   padding: 0 50px;
 `;
-
 
 const ModalLabel = styled.label`
   font-size: 1rem;
