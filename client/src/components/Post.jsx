@@ -34,8 +34,8 @@ const IconButtonWrapper = styled.div`
 
 
 const Post = (props) => {
-  
   const history = useHistory();
+
   return (
     <Card 
       theme={theme} style={{ margin: '15px', width: '30%'}} >
@@ -56,8 +56,8 @@ const Post = (props) => {
         {`Posted by :   ${props.postData.autor}`}
         {props.deleteable ?
           <IconButtonWrapper>
-             <UpdatePost post={props.postData}/>
-            <DeletePost id={props.postData.id}/>
+            <UpdatePost post={props.postData} />
+            <DeletePost id={props.postData.id} refeching={props.refetching()}/>
           </IconButtonWrapper> : null}
       </CardFooter>
     </Card >

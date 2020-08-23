@@ -12,13 +12,13 @@ const DeletePost = (props) => {
   const [deleteModal, setDeleteModal] = useState(false)
 
   const handleClose = () => setDeleteModal(!deleteModal)
-
+  
   const [deletePost] = useMutation(DELETE_POST, {
     update(proxy) {
       const data = proxy.readQuery({
         query: GET_POSTS
       })
-      data.getPosts = data.getPosts.filter(p => p.id !== props.postId)
+      data.getPosts = data.getPosts.filter(p => p.id !== props.id)
       proxy.writeQuery({
         query: GET_POSTS, data
       })

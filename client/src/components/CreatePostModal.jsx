@@ -61,7 +61,7 @@ const WrapperCreatePostModal = styled.div`
   margin: 20px 0;
 `;
 
-const CreatePostModal = () => {
+const CreatePostModal = (props) => {
   const [modalValues, setModalValues] = useState({
     title: "",
     imageUrl: "",
@@ -71,6 +71,7 @@ const CreatePostModal = () => {
     disponibility: true,
     property: ""
   })
+
   const [createPost] = useMutation(CREATE_POST, {
     update(proxy, result) {
       const data = proxy.readQuery({
@@ -79,7 +80,7 @@ const CreatePostModal = () => {
 
       data.getPosts = [result.data.createPost, ...data.getPosts]
       proxy.writeQuery({ query: GET_POSTS, data})
-
+      props.refetching()
       setModalValues({
         title: "",
         imageUrl: "",

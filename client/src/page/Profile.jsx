@@ -11,7 +11,8 @@ import Post from '../components/Post';
 
 const Profile = () => {
   const context = useContext(AuthContext)
-  const { loading, data } = useQuery(GET_POSTS)
+
+  const { loading, data, refetch } = useQuery(GET_POSTS)
 
   const user = useQuery(GET_USER, {
     variables: {
@@ -23,7 +24,7 @@ const Profile = () => {
     '$headings-font-weight': 'bold',
     '$headings-color': '#313131'
   }
-  
+
   return (
     <PageWrapper>
       <TitlePage title={`Hi, ${context.user.username} !`} />
@@ -31,7 +32,7 @@ const Profile = () => {
         {user.loading ?
           (<p>Indentification...</p>) :
           (<>
-            {user.data.getUser.userType === 'landlord' ? <CreatePostModal /> : null}
+            {user.data.getUser.userType === 'landlord' ? <CreatePostModal refetching={refetch} /> : null}
           </>)}
       </div>
       {loading ? (<p>Loading data...</p>) : (
@@ -40,7 +41,7 @@ const Profile = () => {
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {data.getPosts.map((post) => {
               if (post.autor === context.user.username) {
-                return <Post postData={post} key={post.id} deleteable={true} />
+                return <Post postData={post} key={post.id} deleteable={true} refetching={refetch}/>
               }
             })}
           </div>
