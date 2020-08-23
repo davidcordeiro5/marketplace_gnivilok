@@ -17,7 +17,6 @@ import {
 
 const Login = (props) => {
   const context = useContext(AuthContext)
-  console.log('context', context)
   const { handleSubmit, register, errors } = useForm();
   const [graphqlErrorsLogin, setGraphqlErrorsLogin] = useState({})
   const [loginInput, setLoginInput] = useState({
@@ -43,7 +42,6 @@ const Login = (props) => {
 
   const onSubmit = (event) => {
     loginUser();
-    console.log('event', event, loginInput)
   };
   return (
     <PageWrapper>

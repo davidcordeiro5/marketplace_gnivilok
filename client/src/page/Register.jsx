@@ -42,13 +42,11 @@ const Register = (props) => {
   
   
   const onChange = (event) => {
-    console.log('event.target.name', event.target.name, event.target.value)
     setValues({ ...values, [event.target.name]: event.target.value })
   }
   
   const onSubmit = (event) => {
     addUser();
-    console.log('event', event, values)
   };
 
   return (

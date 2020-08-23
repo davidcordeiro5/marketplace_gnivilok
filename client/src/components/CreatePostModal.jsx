@@ -98,12 +98,10 @@ const CreatePostModal = () => {
   const handleClose = () => setModal(!modal);
 
   const onChange = (event) => {
-    console.log('event.target.name', event.target.name, event.target.value)
     setModalValues({ ...modalValues, [event.target.name]: event.target.value })
   }
 
   const onSubmit = (event) => {
-    console.log('event', event, modalValues)
     createPost();
     handleClose();
   };

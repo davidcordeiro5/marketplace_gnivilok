@@ -24,8 +24,6 @@ const Profile = () => {
     '$headings-color': '#313131'
   }
   
-  
-  console.log('loading', data)
   return (
     <PageWrapper>
       <TitlePage title={`Hi, ${context.user.username} !`} />

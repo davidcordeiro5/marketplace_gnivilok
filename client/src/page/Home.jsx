@@ -23,7 +23,6 @@ const Home = () => {
       {loading ? (<p>Loading data</p>) : (
         <PostsWrapper>
           {data.getPosts.map((post) => {
-            console.log('post', post)
             return (
               <Post postData={post} key={post.id} />
             )

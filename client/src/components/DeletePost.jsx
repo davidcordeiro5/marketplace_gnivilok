@@ -31,7 +31,6 @@ const DeletePost = (props) => {
   return (
     <>
       <IconButton bgc={'#ff3535'} onClick={() => {
-          console.log(deleteModal)
           handleClose()
         }} >
         <Icon src={DeleteIcon} alt="delete" />
